@@ -39,12 +39,10 @@ const InstructosSection = () => {
     <section className="text-white py-16 px-4 bg-[#00040D]">
       <div className="w-full mx-auto">
         <div className="flex justify-between items-start mb-8">
-          <a
-            href="#"
-            className="text-white hover:text-gray-300 transition-colors text-lg hover:underline"
-          >
-            المزيد &gt;
-          </a>
+          <button className="text-white hover:text-gray-300 transition-colors text-[24px] font-bold hover:underline flex items-center gap-1">
+            <ChevronLeft className="w-7 h-7 text-white" />
+            <span>المزيد</span>
+          </button>
           <h2 className="text-4xl md:text-5xl font-bold text-red-600 flex items-center gap-2">
             <span>الوطن العربي</span>
             <span className="text-white">نخبة من مدربي</span>
