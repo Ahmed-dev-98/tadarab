@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: "منصة تدرب",
     images: [
       {
-        url: "/assets/hero-section/hero-model.png",
+        url: "/assets/hero-section/hero-model.webp",
         width: 1200,
         height: 630,
         alt: "منصة تدرب - دورات تدريبية عن بعد",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     title: "منصة تدرب - دورات تدريبية عن بعد",
     description:
       "منصة تدرب الرائدة في مجال التدريب في الخليج والوطن العربي منذ أكثر من 10 سنوات.",
-    images: ["/assets/hero-section/hero-model.png"],
+    images: ["/assets/hero-section/hero-model.webp"],
   },
   robots: {
     index: true,
@@ -96,8 +96,6 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <link rel="dns-prefetch" href="https://staging-api.tadarab.com" />
-        <link rel="dns-prefetch" href="https://s3.me-south-1.amazonaws.com" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/assets/nav-bar/logo.svg" />
         <meta name="theme-color" content="#00040D" />

@@ -8,7 +8,7 @@ const SponsorSection = () => {
       <div className="w-full h-[500px] bg-cover bg-center bg-no-repeat relative rounded-[20px]">
         <div className="absolute inset-0 bg-[#25D5AB1A]"></div>
         <Image
-          src="/assets/sponsor-section/BG.png"
+          src="/assets/sponsor-section/BG.webp"
           alt="sponsor"
           className="w-full h-full "
           width={1920}

@@ -1,0 +1,66 @@
+{
+  "name": "منصة تدرب - دورات تدريبية عن بعد",
+  "short_name": "تدرب",
+  "description": "منصة تدرب الرائدة في مجال التدريب في الخليج والوطن العربي منذ أكثر من 10 سنوات. دورات تدريبية عن بعد في مختلف المجالات مع أفضل المدربين.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#00040D",
+  "theme_color": "#00040D",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/assets/nav-bar/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/nav-bar/logo.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/nav-bar/logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "screenshots": [
+    {
+      "src": "/assets/hero-section/hero-model.webp",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "الدورات المجانية",
+      "short_name": "مجاني",
+      "description": "استعرض الدورات المجانية",
+      "url": "/free-courses",
+      "icons": [
+        {
+          "src": "/assets/icons/sparkles.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "أفضل الدورات",
+      "short_name": "الأفضل",
+      "description": "استعرض أفضل الدورات",
+      "url": "/best-courses",
+      "icons": [
+        {
+          "src": "/assets/icons/star.svg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}
