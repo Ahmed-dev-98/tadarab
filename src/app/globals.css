@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Almarai font application */
+* {
+  font-family: var(--font-almarai), "Almarai", "Segoe UI", Tahoma, Geneva,
+    Verdana, sans-serif;
+}
+
+body {
+  font-family: var(--font-almarai), "Almarai", "Segoe UI", Tahoma, Geneva,
+    Verdana, sans-serif;
+}
+
+/* Custom scrollbar hiding for category filters */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/* Smooth scrolling for carousel */
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.embla__slide {
+  flex: 0 0 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Smooth transitions for category buttons */
+.category-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-button:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Course card hover effects - removed bouncing */
+.course-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.course-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation button hover effects - removed bouncing */
+.nav-button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .course-card {
+    width: 280px;
+  }
+
+  .category-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Custom styles for Instructors Carousel */
+.instructors-swiper {
+  padding: 2rem 0;
+  overflow: visible !important;
+}
+
+.instructors-swiper .swiper-wrapper {
+  align-items: center;
+}
+
+.instructors-swiper .swiper-slide {
+  transition: all 0.3s ease;
+  transform-origin: center center;
+}
+
+.instructors-swiper .swiper-slide-active {
+  transform: scale(1.1) !important;
+  z-index: 10;
+}
+
+.instructors-swiper .swiper-slide-prev,
+.instructors-swiper .swiper-slide-next {
+  transform: scale(0.85) !important;
+  opacity: 1;
+}
+
+.instructors-swiper .swiper-slide:not(.swiper-slide-active) {
+  opacity: 1;
+}
+
+/* Custom navigation button styles */
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+  position: relative;
+  z-index: 20;
+}
+
+.swiper-button-prev-custom:hover,
+.swiper-button-next-custom:hover {
+  transform: scale(1.1);
+}
+
+/* Ensure Swiper container doesn't clip the coverflow effect */
+.swiper-container {
+  overflow: visible !important;
+}
+
+.swiper-wrapper {
+  overflow: visible !important;
+}
+
+/* Override Swiper's default overflow hidden */
+.swiper {
+  overflow: visible !important;
+}
+
+.swiper-slide {
+  overflow: visible !important;
+}
+
+/* Responsive adjustments for carousel */
+@media (max-width: 768px) {
+  .instructors-swiper .swiper-slide {
+    width: 280px !important;
+    height: 360px !important;
+  }
+
+  .instructors-swiper .swiper-slide-active {
+    transform: scale(1.05) !important;
+  }
+
+  .instructors-swiper .swiper-slide-prev,
+  .instructors-swiper .swiper-slide-next {
+    transform: scale(0.9) !important;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+/* swiper*/
+
