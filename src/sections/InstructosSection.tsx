@@ -38,7 +38,7 @@ const InstructosSection = () => {
   return (
     <section className="text-white py-16 px-4 bg-[#00040D]">
       <div className="w-full mx-auto">
-        <div className="flex-col-reverse sm:flex-row justify-center sm:justify-between items-center mb-8">
+        <div className="flex-col-reverse sm:flex-row justify-center sm:justify-between items-center mb-8 flex">
           <button className="text-white mx-auto sm:mx-0 hover:text-gray-300 transition-colors text-[24px] font-bold hover:underline flex items-center gap-1">
             <ChevronLeft className="w-7 h-7 text-white" />
             <span>المزيد</span>

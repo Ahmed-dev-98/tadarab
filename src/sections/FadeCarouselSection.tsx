@@ -95,7 +95,10 @@ const FadeCarouselSection = () => {
                 <div className="absolute right-0 w-[50px] sm:w-[70px] md:w-[80px] lg:w-[100px] h-full bg-gradient-to-l from-[#00040D] to-[#00040D00] z-10" />
 
                 <Image
-                  src={currentSlideData?.image_url || "/placeholder.svg"}
+                  src={
+                    currentSlideData?.image_url ||
+                    "/assets/feedback-section/img-1.jpg"
+                  }
                   alt={currentSlideData?.title || "course image"}
                   className="w-full h-full object-cover"
                   width={500}

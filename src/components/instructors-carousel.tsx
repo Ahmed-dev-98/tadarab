@@ -13,6 +13,7 @@ import "swiper/css/navigation";
 import Image from "next/image";
 
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import CarouselSkeleton from "./carousel-skeleton";
 interface InstructorsCarouselProps {
   instructors: Tutor[];
   isLoading: boolean;
@@ -133,11 +134,13 @@ const InstructorsCarousel: React.FC<InstructorsCarouselProps> = ({
           Array.from({ length: 7 }).map((_, index) => (
             <SwiperSlide
               key={`skeleton-${index}`}
-              className="trainer-slide h-[400px] w-[273px]"
+              style={{
+                width: "273px",
+                height: "400px",
+                margin: "0 10px",
+              }}
             >
-              <div className="w-full h-full bg-[#1b1f2a] rounded-[15.6px] overflow-hidden shadow-2xl">
-                <div className="w-full h-full bg-gray-300 rounded-[15.6px]"></div>
-              </div>
+              <CarouselSkeleton />
             </SwiperSlide>
           ))}
 
@@ -180,20 +183,16 @@ const InstructorsCarousel: React.FC<InstructorsCarouselProps> = ({
           Array.from({ length: 3 }).map((_, index) => (
             <SwiperSlide
               key={`loading-skeleton-${index}`}
-              className="trainer-slide h-[400px] w-[273px]"
+              style={{
+                width: "273px",
+                height: "400px",
+                margin: "0 10px",
+              }}
             >
-              <div className="w-full h-full bg-[#1b1f2a] rounded-[15.6px] overflow-hidden shadow-2xl">
-                <div className="w-full h-full bg-gray-300 rounded-[15.6px]"></div>
-              </div>
+              <CarouselSkeleton />
             </SwiperSlide>
           ))}
       </Swiper>
-
-      {isLoading && (
-        <div className="flex justify-center items-center py-8">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-600"></div>
-        </div>
-      )}
 
       {error && (
         <div className="flex justify-center items-center py-8">

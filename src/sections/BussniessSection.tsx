@@ -38,11 +38,11 @@ const BussniessSection = () => {
           src="/assets/bussniess-section/Image.webp"
           alt="bussniess"
           className="w-full h-full"
-          width={1920}
+          width={1440}
           height={540}
         />
         <div className="absolute inset-0 flex items-center md:items-center h-full">
-          <div className="text-right text-white md:max-w-[50%] ms-auto me-[5%] mb-[100px] w-[90%] ">
+          <div className="text-right text-white md:max-w-[50%] ms-auto me-[5%] mb-[100px] w-[90%]">
             <div className="mb-1 md:mb-6 justify-end items-end gap-2 hidden md:flex">
               <ReactSVG src="/assets/bussniess-section/tadarab-red.svg" />
               <span className="text-[28.41px] leading-[28px]">
@@ -66,11 +66,12 @@ const BussniessSection = () => {
               اليوم، اختر الخطة التدريبية التي تناسب أهداف عملك وتواصل معنا
               الآن.
             </p>
-
-            <Button className="text-[16px] font-bold leading-[24px] bg-[#BE1622] w-[210px] mx-auto md:ms-auto text-white h-[48px] py-4 px-5 rounded-[12px] flex items-center gap-2">
-              <ChevronLeft className="w-6 h-6 text-white" />
-              اعرف المزيد
-            </Button>
+            <div className="w-full flex justify-center md:justify-end">
+              <Button className="text-[16px] font-bold leading-[24px] bg-[#BE1622] w-[210px] text-white h-[48px] py-4 px-5 rounded-[12px] flex items-center gap-2">
+                <ChevronLeft className="w-6 h-6 text-white" />
+                اعرف المزيد
+              </Button>
+            </div>
           </div>
           <div className="flex flex-col gap-4 absolute bottom-0 bg-gradient-to-b to-[#00040D] from-[#00040D00] w-full">
             <div className="w-[90%] mx-auto">
