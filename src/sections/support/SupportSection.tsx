@@ -6,7 +6,7 @@ import Image from "next/image";
 const SupportSection = () => {
   return (
     <div className="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[460px] relative bg-[#0D1119] ">
-      <div className="bg-cover bg-center bg-no-repeat absolute top-[-40px] sm:top-[-60px] md:top-[-70px] lg:top-[-89px] right-4 sm:right-8 md:right-12 lg:right-[80px]">
+      <div className="bg-cover bg-center bg-no-repeat absolute top-[-40px] sm:top-[-60px] md:top-[-70px] lg:top-[-89px] right-1/2 transform translate-x-1/2 sm:translate-x-0 sm:right-8 md:right-12 lg:right-[80px]">
         <Image
           src="/assets/support-section/support.png"
           alt="support"

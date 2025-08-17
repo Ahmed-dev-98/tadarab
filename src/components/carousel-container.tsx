@@ -127,7 +127,7 @@ const CarouselContainer = ({
             <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
             <span>المزيد</span>
           </button>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-red-600 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 order-1 sm:order-2 text-center sm:text-right">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-red-600 flex  sm:flex-row sm:items-center gap-1 sm:gap-2 order-1 sm:order-2 text-center sm:text-right">
             <span>{title}</span>
             <span className="text-white">{subtitle}</span>
           </h2>

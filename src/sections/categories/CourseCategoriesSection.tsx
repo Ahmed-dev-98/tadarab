@@ -87,7 +87,6 @@ const CourseCategoriesSection = () => {
     <LazySectionWrapper>
       <section className="text-white bg-[#00040D] py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-8 lg:px-20">
         <div className="relative">
-          {/* Responsive gradient overlay */}
           <div className="absolute top-0 left-0 w-[100px] sm:w-[150px] md:w-[200px] lg:w-[235px] h-full bg-gradient-to-r from-[#00040D] to-[#00040D00] z-10" />
 
           <div className="flex flex-col sm:flex-row justify-between items-center sm:items-center gap-4 sm:gap-0 mb-6 sm:mb-8 relative z-[11]">
@@ -102,7 +101,6 @@ const CourseCategoriesSection = () => {
           </div>
 
           <div className="relative">
-            {/* Navigation buttons - responsive sizing and positioning */}
             <button
               onClick={scrollPrev}
               className="absolute left-2 sm:left-4 md:left-0 top-1/2 -translate-y-1/2 z-10 w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] md:w-[58px] md:h-[58px] bg-[#FFFFFF1A] backdrop-blur-[1px] rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors shadow-lg"

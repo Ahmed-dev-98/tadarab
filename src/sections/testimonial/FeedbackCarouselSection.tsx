@@ -81,7 +81,7 @@ const FeedbackCarouselSection = () => {
             <ChevronLeft className="w-7 h-7 text-white" />
             <span>المزيد</span>
           </button>
-          <h2 className="text-4xl md:text-5xl font-bold text-red-600 flex items-center gap-2">
+          <h2 className="text-4xl md:text-5xl flex-col-reverse md:flex-row font-bold text-red-600 flex items-center gap-2">
             <span>في تدرب</span>
             <span className="text-white">أراء المتعلمين</span>
           </h2>
