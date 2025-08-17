@@ -9,6 +9,7 @@ const almarai = Almarai({
   weight: ["300", "400", "700", "800"],
   display: "swap",
   preload: true,
+  fallback: ["system-ui", "arial"],
 });
 
 export const metadata: Metadata = {
@@ -96,6 +97,19 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <link rel="dns-prefetch" href="//staging-api.tadarab.com" />
+        <link rel="dns-prefetch" href="//s3.me-south-1.amazonaws.com" />
+        <link
+          rel="preload"
+          href="/assets/hero-section/instructors.webp"
+          as="image"
+        />
+        <link
+          rel="preload"
+          href="/assets/hero-section/hero-model.webp"
+          as="image"
+        />
+
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/assets/nav-bar/logo.svg" />
         <meta name="theme-color" content="#00040D" />
@@ -112,6 +126,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="تدرب" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="application-name" content="تدرب" />
+
+        <meta httpEquiv="x-dns-prefetch-control" content="on" />
       </head>
       <body className={`${almarai.variable} antialiased`}>
         <QueryProvider>{children}</QueryProvider>

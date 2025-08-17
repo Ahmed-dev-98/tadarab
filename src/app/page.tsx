@@ -1,9 +1,7 @@
 "use client";
+import LazySectionWrapper from "@/components/lazy-section-wrapper";
+import { Header, HeroSection, BestsellingSection, Footer } from "@/sections";
 import {
-  Header,
-  HeroSection,
-  BestsellingSection,
-  Footer,
   NewCoursesSection,
   FadeCarouselSection,
   CourseCategoriesSection,
@@ -15,7 +13,7 @@ import {
   InstructosSection,
   SupportSection,
   FAQ,
-} from "@/sections";
+} from "@/lib/dynamic-imports";
 
 export default function Home() {
   return (
@@ -25,20 +23,50 @@ export default function Home() {
       <HeroSection />
       <main className="max-w-[1961px] mx-auto flex flex-col gap-[80px] bg-[#00040D]">
         <BestsellingSection />
-        <NewCoursesSection />
-        <FadeCarouselSection />
 
-        <CourseCategoriesSection />
-        <FreeCoursesSection />
-        <FeedbackCarouselSection />
+        <LazySectionWrapper>
+          <NewCoursesSection />
+        </LazySectionWrapper>
 
-        <SponsorSection />
-        <StatisticsMap />
-        
-        <BussniessSection />
-        <InstructosSection />
-        <SupportSection />
-        <FAQ />
+        <LazySectionWrapper>
+          <FadeCarouselSection />
+        </LazySectionWrapper>
+
+        <LazySectionWrapper>
+          <CourseCategoriesSection />
+        </LazySectionWrapper>
+
+        <LazySectionWrapper>
+          <FreeCoursesSection />
+        </LazySectionWrapper>
+
+        <LazySectionWrapper>
+          <FeedbackCarouselSection />
+        </LazySectionWrapper>
+
+        <LazySectionWrapper>
+          <SponsorSection />
+        </LazySectionWrapper>
+
+        <LazySectionWrapper>
+          <StatisticsMap />
+        </LazySectionWrapper>
+
+        <LazySectionWrapper>
+          <BussniessSection />
+        </LazySectionWrapper>
+
+        <LazySectionWrapper>
+          <InstructosSection />
+        </LazySectionWrapper>
+
+        <LazySectionWrapper>
+          <SupportSection />
+        </LazySectionWrapper>
+
+        <LazySectionWrapper>
+          <FAQ />
+        </LazySectionWrapper>
       </main>
 
       <Footer />

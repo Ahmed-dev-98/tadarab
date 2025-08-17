@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true next build",
+    "analyze:win": "set ANALYZE=true && next build"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
