@@ -1,14 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import CarouselContainer from "@/components/carousel-container";
-import { useCategories, useLazyQuery } from "@/lib/hooks";
-import { coursesApi, CoursesResponse } from "@/lib/api/courses";
 import { Course } from "@/types/course";
+import CarouselContainer from "@/components/carousel-container";
+import { useLazyQuery } from "@/lib/hooks";
+import { coursesApi, CoursesResponse } from "@/api/courses";
 
-const BestsellingSection: React.FC = () => {
+const NewCoursesSection: React.FC = () => {
   const [page, setPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [courses, setCourses] = useState<Course[]>([]);
 
   const {
@@ -17,22 +16,19 @@ const BestsellingSection: React.FC = () => {
     error,
     ref,
   } = useLazyQuery<CoursesResponse, Error>({
-    queryKey: ["bestselling-courses", page, selectedCategory],
+    queryKey: ["new-courses", page],
     queryFn: () =>
       coursesApi
         .getBestsellingCourses({
           page,
           per_page: 10,
-          scopes: ["best-seller", selectedCategory?.toString() || "null"],
+          scopes: ["new"],
         })
         .then((res) => {
           setCourses((prev) => [...prev, ...res.data]);
           return res;
         }),
   });
-
-  const { data: categoriesResponse } = useCategories();
-  const categories = categoriesResponse?.data || [];
 
   const handleLoadMore = () => {
     if (
@@ -43,24 +39,14 @@ const BestsellingSection: React.FC = () => {
     }
   };
 
-  const onCategoryClick = (categoryId: number) => {
-    if (categoryId !== selectedCategory) {
-      setSelectedCategory(categoryId);
-      setPage(1);
-      setCourses([]);
-    }
-  };
-
   return (
-    <section ref={ref} className="w-full overflow-hidden">
+    <section ref={ref}>
       <CarouselContainer
         isLoading={isLoading}
         error={error}
         onLoadMore={handleLoadMore}
-        categories={categories}
-        onCategoryClick={onCategoryClick}
         courses={courses}
-        title="الأكثر مبيعاً"
+        title="الجديدة"
         subtitle="الدورات"
         hasMorePages={
           coursesResponse?.pagination
@@ -72,4 +58,4 @@ const BestsellingSection: React.FC = () => {
   );
 };
 
-export default BestsellingSection;
+export default NewCoursesSection;

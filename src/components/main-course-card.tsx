@@ -26,6 +26,7 @@ const MainCourseCard = ({ course }: { course: Course }) => {
               : "/assets/bussniess-section/tadarab-red.svg"
           }
           alt={course?.title || "course image"}
+          
           width={320}
           height={180}
           className="w-full h-full object-cover object-top select-none"

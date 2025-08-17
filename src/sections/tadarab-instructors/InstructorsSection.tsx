@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import InstructorsCarousel from "@/components/instructors-carousel";
 import { useQuery } from "@tanstack/react-query";
-import { instructorsApi } from "@/lib/api/instructors";
+import { instructorsApi } from "@/api/instructors";
 import { Tutor } from "@/types/tutor";
+import InstructorsCarousel from "./_components/instructors-carousel";
 
 const InstructosSection = () => {
   const [page, setPage] = useState(1);
   const [instructors, setInstructors] = useState<Tutor[]>([]);
+
   const {
     data: instructorsResponse,
     isLoading,
@@ -22,23 +23,41 @@ const InstructosSection = () => {
           per_page: 10,
         })
         .then((res) => {
-          setInstructors((prev) => [...prev, ...res.data]);
+          setInstructors((prev) => {
+            const existingIds = new Set(
+              prev.map((instructor) => instructor.id)
+            );
+            const newInstructors = res.data.filter(
+              (instructor) => !existingIds.has(instructor.id)
+            );
+            return [...prev, ...newInstructors];
+          });
           return res;
         }),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    refetchOnWindowFocus: false,
+    retry: 2,
   });
-  const handleLoadMore = () => {
+
+  const handleLoadMore = useCallback(() => {
     if (
       instructorsResponse?.pagination &&
       page < instructorsResponse.pagination.pages
     ) {
       setPage((prev) => prev + 1);
     }
-  };
+  }, [instructorsResponse?.pagination, page]);
+
+  const hasMorePages = useMemo(() => {
+    return instructorsResponse?.pagination
+      ? page < instructorsResponse.pagination.pages
+      : true;
+  }, [instructorsResponse?.pagination, page]);
 
   return (
     <section className="text-white py-16 px-4 bg-[#00040D]">
       <div className="w-full mx-auto">
-        <div className="flex-col-reverse sm:flex-row justify-center sm:justify-between items-center mb-8">
+        <div className="flex-col-reverse sm:flex-row justify-center sm:justify-between items-center mb-8 flex">
           <button className="text-white mx-auto sm:mx-0 hover:text-gray-300 transition-colors text-[24px] font-bold hover:underline flex items-center gap-1">
             <ChevronLeft className="w-7 h-7 text-white" />
             <span>المزيد</span>
@@ -55,11 +74,7 @@ const InstructosSection = () => {
             instructors={instructors}
             isLoading={isLoading}
             error={error}
-            hasMorePages={
-              instructorsResponse?.pagination
-                ? page < instructorsResponse.pagination.pages
-                : true
-            }
+            hasMorePages={hasMorePages}
           />
         </div>
 

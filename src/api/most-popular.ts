@@ -1,10 +1,5 @@
 import { apiClient } from "./client";
 import { CoursesResponse } from "./courses";
-
-
-
-
-
 export const mostPopularApi = {
     getMostPopularCourses: async ({
         page = 1,
