@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Almarai } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/providers/query-provider";
+import { Analytics } from "@vercel/analytics/react";
 
 const almarai = Almarai({
   variable: "--font-almarai",
@@ -131,6 +132,7 @@ export default function RootLayout({
       </head>
       <body className={`${almarai.variable} antialiased`}>
         <QueryProvider>{children}</QueryProvider>
+        <Analytics />
       </body>
     </html>
   );
