@@ -97,7 +97,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full">
-      <div className="hidden md:flex justify-center gap-4 items-center h-12 relative">
+      <div className="flex justify-center gap-4 items-center h-12 relative">
         <div
           className="absolute inset-0 bg-cover bg-center w-full h-full"
           style={{
@@ -107,7 +107,7 @@ export default function Header() {
             backgroundRepeat: "no-repeat",
           }}
         ></div>
-        <div className="flex gap-4 items-center justify-center relative">
+        <div className="flex-col flex-col-reverse md:flex-row flex gap-2 items-center justify-center relative">
           <button className="text-sm text-white hover:text-gray-200 transition-colors underline">
             اشترك الان
           </button>
