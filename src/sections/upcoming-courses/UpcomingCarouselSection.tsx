@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useLazyQuery } from "@/lib/hooks";
-import { mostPopularApi } from "@/lib/api";
+import { mostPopularApi } from "@/api";
 import Image from "next/image";
-import { CoursesResponse } from "@/lib/api/courses";
+import { CoursesResponse } from "@/api/courses";
 import { Course } from "@/types/course";
 
 // Skeleton component for the carousel

@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useMemo } from "react";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import InstructorsCarousel from "@/components/instructors-carousel";
 import { useQuery } from "@tanstack/react-query";
-import { instructorsApi } from "@/lib/api/instructors";
+import { instructorsApi } from "@/api/instructors";
 import { Tutor } from "@/types/tutor";
+import InstructorsCarousel from "./_components/instructors-carousel";
 
 const InstructosSection = () => {
   const [page, setPage] = useState(1);

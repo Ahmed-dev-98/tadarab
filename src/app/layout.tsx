@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Almarai } from "next/font/google";
 import "./globals.css";
-import QueryProvider from "@/components/providers/query-provider";
+import QueryProvider from "@/providers/query-provider";
 
 const almarai = Almarai({
   variable: "--font-almarai",

@@ -191,7 +191,7 @@ const CarouselContainer = ({
                   ))
                 : isLoading &&
                   courses.length === 0 &&
-                  Array.from({ length: 4 }).map((_, index) => (
+                  Array.from({ length: 6 }).map((_, index) => (
                     <CarouselSkeleton key={`skeleton-${index}`} />
                   ))}
             </div>

@@ -1,12 +1,10 @@
-"use client";
-
-import React, { useState } from "react";
-import { Course } from "@/types/course";
 import CarouselContainer from "@/components/carousel-container";
+import { Course } from "@/types/course";
 import { useLazyQuery } from "@/lib/hooks";
-import { coursesApi, CoursesResponse } from "@/lib/api/courses";
+import React, { useState } from "react";
+import { coursesApi, CoursesResponse } from "@/api/courses";
 
-const NewCoursesSection: React.FC = () => {
+const FreeCoursesSection = () => {
   const [page, setPage] = useState(1);
   const [courses, setCourses] = useState<Course[]>([]);
 
@@ -16,13 +14,13 @@ const NewCoursesSection: React.FC = () => {
     error,
     ref,
   } = useLazyQuery<CoursesResponse, Error>({
-    queryKey: ["new-courses", page],
+    queryKey: ["free-courses", page],
     queryFn: () =>
       coursesApi
         .getBestsellingCourses({
           page,
           per_page: 10,
-          scopes: ["new"],
+          scopes: ["free"],
         })
         .then((res) => {
           setCourses((prev) => [...prev, ...res.data]);
@@ -46,16 +44,16 @@ const NewCoursesSection: React.FC = () => {
         error={error}
         onLoadMore={handleLoadMore}
         courses={courses}
-        title="الجديدة"
-        subtitle="الدورات"
         hasMorePages={
           coursesResponse?.pagination
             ? page < coursesResponse.pagination.pages
             : true
         }
+        title="المجانية"
+        subtitle="الدورات"
       />
     </section>
   );
 };
 
-export default NewCoursesSection;
+export default FreeCoursesSection;

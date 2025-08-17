@@ -13,7 +13,7 @@ import "swiper/css/navigation";
 import Image from "next/image";
 
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
-import CarouselSkeleton from "./carousel-skeleton";
+import CarouselSkeleton from "@/components/carousel-skeleton";
 
 interface InstructorsCarouselProps {
   instructors: Tutor[];

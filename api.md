@@ -21,5 +21,5 @@ https://staging-api.tadarab.com/api/v1/public/topics?filters[parent]=[null] // d
 
 
 ● Most Popular Courses
-https://staging-api.tadarab.com/api/v1/public/courses?&page=1&per_page=10&filters[scope]=popular
+https://staging-api.tadarab.com/api/v1/public/courses?&page=1&per_page=10&filters[scope]=popular // done
 

@@ -3,7 +3,7 @@
 import React, { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft } from "lucide-react";
-import FeedbackCard from "@/components/feedback-card";
+import FeedbackCard from "@/sections/testimonial/_components/feedback-card";
 
 const FeedbackCarouselSection = () => {
   const mockFeedbackData = [
