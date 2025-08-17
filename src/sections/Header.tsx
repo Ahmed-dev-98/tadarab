@@ -1,7 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronLeft, Search, ShoppingCart } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronLeft,
+  Search,
+  ShoppingCart,
+  Menu,
+  X,
+} from "lucide-react";
 import { ReactSVG } from "react-svg";
 
 type Category = string;
@@ -13,6 +20,7 @@ type NavigationData = {
 
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] =
     useState<Category>("تربية الأبناء");
 
@@ -99,8 +107,8 @@ export default function Header() {
             backgroundRepeat: "no-repeat",
           }}
         ></div>
-        <div className="flex gap-4 items-center justify-center relative">
-          <button className="text-sm text-white hover:text-gray-200 transition-colors">
+        <div className="flex-col flex-col-reverse md:flex-row flex gap-2 items-center justify-center relative">
+          <button className="text-sm text-white hover:text-gray-200 transition-colors underline">
             اشترك الان
           </button>
           <span className="text-sm text-white">
@@ -109,9 +117,26 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="bg-[#00040D] px-5 py-3 border-b border-gray-800 relative ">
-        <div className="flex justify-between gap-6 items-center w-full">
-          <div className="flex items-center gap-3">
+      <div className="bg-[#00040D] px-3 sm:px-5 py-3 border-b border-gray-800 relative">
+        <div className="flex flex-col lg:flex-row justify-between gap-4 lg:gap-6 items-center w-full">
+          <div className="flex lg:hidden items-center justify-between w-full">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-white hover:text-gray-300 transition-colors p-2"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+            <ReactSVG src={"/assets/nav-bar/logo.svg"} className="w-24 h-8" />
+            <button className="text-white hover:text-gray-300 transition-colors p-2">
+              <ShoppingCart className="w-6 h-6" />
+            </button>
+          </div>
+
+          <div className="hidden lg:flex items-center gap-3">
             <button className="text-white hover:text-gray-300 transition-colors p-2">
               <ShoppingCart className="w-6 h-6" />
             </button>
@@ -122,31 +147,29 @@ export default function Header() {
               <span>تدرب بلا حدود</span>
               <ReactSVG src={"/assets/icons/sparkles.svg"} />
             </button>
-            <button className="bg-transparent text-white text-[14px] font-bol">
+            <button className="bg-transparent text-white text-[14px] font-bold">
               تدرب للأعمال
             </button>
-            <button className="bg-transparent text-white text-[14px] font-bol">
+            <button className="bg-transparent text-white text-[14px] font-bold">
               انضم كمدرب
             </button>
           </div>
-          <div className="relative flex-1">
+
+          <div className="relative w-full lg:flex-1 max-w-2xl">
             <input
               type="text"
               dir="rtl"
               placeholder="ماذا تريد ان تتعلم اليوم؟"
-              className="w-full px-4 py-3 pr-12 bg-gray-800 text-white placeholder-gray-400 rounded-lg border border-gray-700 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
+              className="w-full px-4 py-3 pr-12 bg-gray-800 text-white placeholder-gray-400 rounded-lg border border-gray-700 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all text-sm sm:text-base"
             />
             <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           </div>
-          <div className="flex justify-end items-center space-x-2">
+
+          <div className="hidden lg:flex justify-end items-center space-x-2">
             <div className="flex items-center space-x-4">
               <div className="relative">
                 <button
                   onClick={() => {
-                    console.log(
-                      "Dropdown clicked, current state:",
-                      isDropdownOpen
-                    );
                     setIsDropdownOpen(!isDropdownOpen);
                   }}
                   className="flex items-center space-x-2 px-4 py-3 text-white hover:text-gray-300 transition-colors rounded-lg hover:bg-gray-800"
@@ -213,11 +236,108 @@ export default function Header() {
             <ReactSVG src={"/assets/nav-bar/logo.svg"} />
           </div>
         </div>
+
+        {isMobileMenuOpen && (
+          <div className="lg:hidden mt-4 bg-[#191D25] rounded-lg p-4 space-y-4">
+            <div className="space-y-3">
+              <button className="w-full text-right px-4 py-3 bg-[#272A32] text-white rounded-lg hover:bg-gray-700 transition-colors">
+                تسجيل الدخول
+              </button>
+              <button className="w-full text-right px-4 py-3 bg-[#292951] text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-between">
+                <span>تدرب بلا حدود</span>
+                <ReactSVG src={"/assets/icons/sparkles.svg"} />
+              </button>
+              <button className="w-full text-right px-4 py-3 bg-transparent text-white hover:bg-gray-700 rounded-lg transition-colors">
+                تدرب للأعمال
+              </button>
+              <button className="w-full text-right px-4 py-3 bg-transparent text-white hover:bg-gray-700 rounded-lg transition-colors">
+                انضم كمدرب
+              </button>
+            </div>
+
+            <div className="border-t border-gray-700 pt-4">
+              <h3 className="text-white font-semibold mb-3 text-right">
+                استكشف الأقسام
+              </h3>
+              <div className="space-y-2">
+                {navigationData.categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => {
+                      setSelectedCategory(category);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full text-right p-3 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white transition-all flex items-center justify-between"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    <span className="text-sm">{category}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {isDropdownOpen && (
+        <div className="lg:hidden fixed inset-0 z-[9998] bg-black bg-opacity-50">
+          <div className="fixed top-20 left-4 right-4 bg-[#191D25] rounded-lg shadow-2xl max-h-[80vh] overflow-y-auto">
+            <div className="p-4">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-white font-semibold text-right">
+                  أقسام التعلم
+                </h3>
+                <button
+                  onClick={() => setIsDropdownOpen(false)}
+                  className="text-gray-400 hover:text-white"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              <div className="space-y-2 mb-4">
+                {navigationData.categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`w-full text-right p-3 rounded-lg transition-all flex items-center justify-between ${
+                      selectedCategory === category
+                        ? "bg-[#272A32] text-white"
+                        : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                    }`}
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    <span className="text-sm">{category}</span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="border-t border-gray-700 pt-4">
+                <h4 className="text-white font-semibold mb-3 text-right">
+                  أهم مواضيع {selectedCategory}
+                </h4>
+                <div className="space-y-2">
+                  {navigationData.subTopics[selectedCategory]?.map((topic) => (
+                    <button
+                      key={topic}
+                      className="w-full text-right p-3 rounded-lg text-white hover:bg-gray-700 transition-all"
+                    >
+                      <span className="text-sm">{topic}</span>
+                    </button>
+                  ))}
+                </div>
+                <button className="w-full mt-4 bg-white text-gray-800 py-3 px-4 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                  استكشف جميع الدورات
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isDropdownOpen && (
         <div
-          className="fixed inset-0 z-[9998]"
+          className="hidden lg:block fixed inset-0 z-[9998]"
           onClick={() => setIsDropdownOpen(false)}
         />
       )}

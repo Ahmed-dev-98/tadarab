@@ -27,11 +27,14 @@ export default function Home() {
         <BestsellingSection />
         <NewCoursesSection />
         <FadeCarouselSection />
+
         <CourseCategoriesSection />
         <FreeCoursesSection />
         <FeedbackCarouselSection />
+
         <SponsorSection />
         <StatisticsMap />
+        
         <BussniessSection />
         <InstructosSection />
         <SupportSection />

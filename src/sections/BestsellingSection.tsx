@@ -52,7 +52,7 @@ const BestsellingSection: React.FC = () => {
   };
 
   return (
-    <section ref={ref}>
+    <section ref={ref} className="w-full overflow-hidden">
       <CarouselContainer
         isLoading={isLoading}
         error={error}

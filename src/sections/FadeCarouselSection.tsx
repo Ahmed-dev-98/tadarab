@@ -24,8 +24,6 @@ const FadeCarouselSection = () => {
       }),
   });
 
-  console.log(mostPopularCourses?.data);
-
   const handleDotClick = (index: number) => {
     if (index === currentSlide || isTransitioning) return;
 
@@ -53,8 +51,11 @@ const FadeCarouselSection = () => {
     const finalScale = isActive ? 1 : scale;
     const finalOpacity = isActive ? 1 : opacity;
 
-    const baseWidth = 80;
-    const minWidth = 40;
+    // Responsive dot sizes
+    const baseWidth =
+      window.innerWidth < 768 ? 60 : window.innerWidth < 1024 ? 70 : 80;
+    const minWidth =
+      window.innerWidth < 768 ? 30 : window.innerWidth < 1024 ? 35 : 40;
     const dynamicWidth = minWidth + (baseWidth - minWidth) * finalScale;
 
     return {
@@ -67,25 +68,31 @@ const FadeCarouselSection = () => {
   const currentSlideData = mostPopularCourses?.data[currentSlide];
 
   return (
-    <section ref={ref} className="text-white  bg-[#00040D] px-[20px]">
-      <h2 className="text-4xl md:text-5xl font-bold text-red-600 flex items-end justify-end gap-2 mb-10">
-        <span>تدريبية قادمة</span>
-        <span className="text-white">دورات و ورش</span>
+    <section
+      ref={ref}
+      className="text-white bg-[#00040D] px-4 sm:px-6 md:px-8 lg:px-20"
+    >
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-red-600 flex flex-col sm:flex-row items-center sm:items-end justify-start sm:justify-end gap-1 sm:gap-2 mb-6 sm:mb-8 md:mb-10">
+        <span className="order-2 sm:order-1">تدريبية قادمة</span>
+        <span className="text-white order-1 sm:order-2">دورات و ورش</span>
       </h2>
-      <div className="relative w-full h-screen bg-[#00040D] overflow-hidden">
-        <div className="relative h-full flex items-center justify-between px-8 lg:px-5">
-          <div className="flex-shrink-0 w-[50%]">
+
+      <div className="relative w-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:h-screen bg-[#00040D] overflow-hidden">
+        <div className="relative h-full flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 md:px-8 lg:px-5 gap-6 lg:gap-0">
+          {/* Image Section */}
+          <div className="flex-shrink-0 w-full lg:w-[50%] order-2 lg:order-1">
             <div
               className={cn(
                 "transition-all duration-600 ease-in-out",
                 isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
               )}
             >
-              <div className="relative w-full h-[500px]">
-                <div className="absolute top-0 h-[98px] w-full bg-gradient-to-b from-[#00040D] to-[#00040D00] z-10" />
-                <div className="absolute bottom-0 h-[98px] w-full bg-gradient-to-t from-[#00040D] to-[#00040D00] z-10" />
-                <div className="absolute left-0 w-[100px] h-full bg-gradient-to-r from-[#00040D] to-[#00040D00] z-10" />
-                <div className="absolute right-0 w-[100px] h-full bg-gradient-to-l from-[#00040D] to-[#00040D00] z-10" />
+              <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px]">
+                {/* Gradient overlays - responsive positioning */}
+                <div className="absolute top-0 h-[50px] sm:h-[70px] md:h-[80px] lg:h-[98px] w-full bg-gradient-to-b from-[#00040D] to-[#00040D00] z-10" />
+                <div className="absolute bottom-0 h-[50px] sm:h-[70px] md:h-[80px] lg:h-[98px] w-full bg-gradient-to-t from-[#00040D] to-[#00040D00] z-10" />
+                <div className="absolute left-0 w-[50px] sm:w-[70px] md:w-[80px] lg:w-[100px] h-full bg-gradient-to-r from-[#00040D] to-[#00040D00] z-10" />
+                <div className="absolute right-0 w-[50px] sm:w-[70px] md:w-[80px] lg:w-[100px] h-full bg-gradient-to-l from-[#00040D] to-[#00040D00] z-10" />
 
                 <Image
                   src={currentSlideData?.image_url || "/placeholder.svg"}
@@ -94,45 +101,51 @@ const FadeCarouselSection = () => {
                   width={500}
                   height={500}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent " />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
             </div>
-          </div>{" "}
-          <div className="flex-1 text-right">
+          </div>
+
+          {/* Text Content Section */}
+          <div className="flex-1 text-center lg:text-right order-1 lg:order-2 w-full lg:w-auto">
             <div
               className={cn(
-                "transition-all duration-600 ease-in-out flex flex-col gap-6",
+                "transition-all duration-600 ease-in-out flex flex-col gap-3 sm:gap-4 md:gap-5 lg:gap-6",
                 isTransitioning
                   ? "opacity-0 translate-y-8"
                   : "opacity-100 translate-y-0"
               )}
             >
               {currentSlideData?.labels?.[1] && (
-                <div className=" bg-white w-fit ms-auto py-2 px-3 rounded-[8px]">
-                  <p className="text-black text-[18px] leading-[16px] font-bold">
+                <div className="bg-white w-fit mx-auto lg:ms-auto py-1.5 sm:py-2 px-2 sm:px-3 rounded-[8px]">
+                  <p className="text-black text-sm sm:text-base md:text-lg lg:text-[18px] leading-tight font-bold">
                     {currentSlideData?.labels?.[1]?.ar}
                   </p>
                 </div>
               )}
-              <h1 className="text-white text-[48px] leading-[72px]  font-bold">
+
+              <h1 className="text-white text-center lg:text-right text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[48px] leading-tight sm:leading-snug md:leading-normal lg:leading-[60px] xl:leading-[72px] font-bold">
                 {currentSlideData?.title}
               </h1>
-              <div className="h-[3px] w-[20px] bg-[#F2F2F2] ms-auto mt-[-22px]" />
-              <p className="text-gray-300 text-[30px] font-normal">
+
+              <div className="h-[2px] sm:h-[2.5px] md:h-[3px] w-[15px] sm:w-[18px] md:w-[20px] bg-[#F2F2F2] ms-auto mt-[-8px] sm:mt-[-12px] md:mt-[-16px] lg:mt-[-22px]" />
+
+              <p className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-[30px] font-normal">
                 {currentSlideData?.tutor?.name}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-20">
-          <div className="flex">
+        {/* Navigation Dots */}
+        <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 lg:bottom-0 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="flex gap-1 sm:gap-1.5 md:gap-2">
             {mostPopularCourses?.data.map((_: Course, index: number) => (
               <button
                 key={index}
                 onClick={() => handleDotClick(index)}
                 className={cn(
-                  "transition-all duration-300 ease-in-out h-[5px] rounded-[4px]",
+                  "transition-all duration-300 ease-in-out h-[4px] sm:h-[4.5px] md:h-[5px] rounded-[3px] sm:rounded-[4px]",
                   "hover:scale-110 bg-white/40 hover:bg-white",
                   index === currentSlide ? "bg-white" : "bg-[#FFFFFF33]"
                 )}
