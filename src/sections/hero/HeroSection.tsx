@@ -1,29 +1,31 @@
 import { ArrowLeftIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
     <section className="text-center mb-16 min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[820px] bg-[#00040D] mx-auto overflow-hidden mt-[80px] max-w-[1961px] relative flex justify-center items-center">
-      <div
-        className="absolute inset-0 bg-cover bg-center w-full sm:w-[70%] md:w-[60%] lg:w-[55%] h-full"
-        style={{
-          backgroundImage: "url('/assets/hero-section/instructors.webp')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></div>
+      <div className="absolute inset-0 w-full sm:w-[70%] md:w-[60%] lg:w-[55%] h-full">
+        <Image
+          src="/assets/hero-section/instructors.webp"
+          alt="Instructors background"
+          fill
+          priority
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 70vw, (max-width: 1024px) 60vw, 55vw"
+        />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-r from-[#000000] to-[#0000007D] w-full h-full"></div>
       <div className="absolute left-1/2 -top-6 sm:-top-8 md:-top-10 lg:-top-12 bg-[#7F60F9] -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] rounded-full blur-3xl opacity-30"></div>
-      <div
-        className="absolute hidden md:block right-0 bg-cover bg-center w-full sm:w-[50%] md:w-[45%] lg:w-[40%] h-[400px] sm:h-[500px] md:h-[600px] lg:h-[740px] bottom-0"
-        style={{
-          backgroundImage: "url('/assets/hero-section/hero-model.webp')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></div>
+      <div className="absolute hidden md:block right-0 w-full sm:w-[50%] md:w-[45%] lg:w-[40%] h-[400px] sm:h-[500px] md:h-[600px] lg:h-[740px] bottom-0">
+        <Image
+          src="/assets/hero-section/hero-model.webp"
+          alt="Hero model"
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 45vw, 40vw"
+        />
+      </div>
       <div className="absolute bottom-0 bg-gradient-to-t from-[#00040D] to-[#00040D00] w-full h-[100px] sm:h-[120px] md:h-[150px] lg:h-[192px]"></div>
 
       <div className="relative z-10 flex flex-col gap-2 sm:gap-3 md:gap-4 items-center justify-center h-full w-full sm:w-[400px] md:w-[500px] lg:w-[569px] px-4 sm:px-6 md:px-8 lg:px-[68px]">

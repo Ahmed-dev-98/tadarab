@@ -7,7 +7,7 @@ import { mostPopularApi } from "@/api";
 import Image from "next/image";
 import { CoursesResponse } from "@/api/courses";
 import { Course } from "@/types/course";
-import CarouselSkeleton from "@/components/carousel-skeleton";
+import { CarouselSkeleton } from "./_components/CarouselSkeleton";
 
 
 

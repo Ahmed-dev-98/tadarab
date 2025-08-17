@@ -1,41 +1,35 @@
-import React, { ReactNode } from "react";
+import React, { Suspense } from "react";
 import { useIntersectionObserver } from "@/lib/hooks/useIntersectionObserver";
 
 interface LazySectionWrapperProps {
-  children: ReactNode;
-  onIntersect?: () => void;
+  children: React.ReactNode;
+  fallback?: React.ReactNode;
   threshold?: number;
   rootMargin?: string;
-  triggerOnce?: boolean;
   className?: string;
 }
 
-const LazySectionWrapper: React.FC<LazySectionWrapperProps> = ({
+export default function LazySectionWrapper({
   children,
-  onIntersect,
+  fallback = <div className="h-96 bg-transparent animate-pulse rounded-lg" />,
   threshold = 0.1,
-  rootMargin = "100px",
-  triggerOnce = true,
+  rootMargin = "300px",
   className = "",
-}) => {
-  const { ref, hasTriggered } = useIntersectionObserver({
-    threshold,
-    rootMargin,
-    triggerOnce,
-  });
-
-  // Call onIntersect when the section comes into view
-  React.useEffect(() => {
-    if (hasTriggered && onIntersect) {
-      onIntersect();
-    }
-  }, [hasTriggered, onIntersect]);
+}: LazySectionWrapperProps) {
+  const { elementRef, isIntersecting } =
+    useIntersectionObserver<HTMLDivElement>({
+      threshold,
+      rootMargin,
+      freezeOnceVisible: true,
+    });
 
   return (
-    <section ref={ref} className={className}>
-      {children}
-    </section>
+    <div ref={elementRef} className={className}>
+      {isIntersecting ? (
+        <Suspense fallback={fallback}>{children}</Suspense>
+      ) : (
+        fallback
+      )}
+    </div>
   );
-};
-
-export default LazySectionWrapper;
+}
