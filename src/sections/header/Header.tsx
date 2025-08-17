@@ -10,6 +10,9 @@ import {
   X,
 } from "lucide-react";
 import { ReactSVG } from "react-svg";
+import OfferBanner from "./_components/OfferBanner";
+import MenueNav from "./_components/MenueNav";
+import MobileMenue from "./_components/MobileMenue";
 
 type Category = string;
 type SubTopic = string;
@@ -97,27 +100,9 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full">
-      <div className="flex justify-center gap-4 items-center h-12 relative">
-        <div
-          className="absolute inset-0 bg-cover bg-center w-full h-full"
-          style={{
-            backgroundImage: "url('/assets/nav-bar/offer-bg.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        ></div>
-        <div className="flex-col-reverse md:flex-row flex gap-2 items-center justify-center relative">
-          <button className="text-sm text-white hover:text-gray-200 transition-colors underline">
-            اشترك الان
-          </button>
-          <span className="text-sm text-white">
-            خصم 80% بمناسبة شهر رمضان الكريم لفترة محدودة
-          </span>
-        </div>
-      </div>
+      <OfferBanner />
 
-      <div className="bg-[#00040D] px-3 sm:px-5 py-3 border-b border-gray-800 relative">
+      <nav className="bg-[#00040D] px-3 sm:px-5 py-3 border-b border-gray-800 relative">
         <div className="flex flex-col lg:flex-row justify-between gap-4 lg:gap-6 items-center w-full">
           <div className="flex lg:hidden items-center justify-between w-full">
             <button
@@ -238,101 +223,21 @@ export default function Header() {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 bg-[#191D25] rounded-lg p-4 space-y-4">
-            <div className="space-y-3">
-              <button className="w-full text-right px-4 py-3 bg-[#272A32] text-white rounded-lg hover:bg-gray-700 transition-colors">
-                تسجيل الدخول
-              </button>
-              <button className="w-full text-right px-4 py-3 bg-[#292951] text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-between">
-                <span>تدرب بلا حدود</span>
-                <ReactSVG src={"/assets/icons/sparkles.svg"} />
-              </button>
-              <button className="w-full text-right px-4 py-3 bg-transparent text-white hover:bg-gray-700 rounded-lg transition-colors">
-                تدرب للأعمال
-              </button>
-              <button className="w-full text-right px-4 py-3 bg-transparent text-white hover:bg-gray-700 rounded-lg transition-colors">
-                انضم كمدرب
-              </button>
-            </div>
-
-            <div className="border-t border-gray-700 pt-4">
-              <h3 className="text-white font-semibold mb-3 text-right">
-                استكشف الأقسام
-              </h3>
-              <div className="space-y-2">
-                {navigationData.categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => {
-                      setSelectedCategory(category);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="w-full text-right p-3 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white transition-all flex items-center justify-between"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                    <span className="text-sm">{category}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          <MobileMenue
+            navigationData={navigationData}
+            setSelectedCategory={setSelectedCategory}
+            setIsMobileMenuOpen={setIsMobileMenuOpen}
+          />
         )}
-      </div>
+      </nav>
 
       {isDropdownOpen && (
-        <div className="lg:hidden fixed inset-0 z-[9998] bg-black bg-opacity-50">
-          <div className="fixed top-20 left-4 right-4 bg-[#191D25] rounded-lg shadow-2xl max-h-[80vh] overflow-y-auto">
-            <div className="p-4">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-white font-semibold text-right">
-                  أقسام التعلم
-                </h3>
-                <button
-                  onClick={() => setIsDropdownOpen(false)}
-                  className="text-gray-400 hover:text-white"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-
-              <div className="space-y-2 mb-4">
-                {navigationData.categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`w-full text-right p-3 rounded-lg transition-all flex items-center justify-between ${
-                      selectedCategory === category
-                        ? "bg-[#272A32] text-white"
-                        : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                    }`}
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                    <span className="text-sm">{category}</span>
-                  </button>
-                ))}
-              </div>
-
-              <div className="border-t border-gray-700 pt-4">
-                <h4 className="text-white font-semibold mb-3 text-right">
-                  أهم مواضيع {selectedCategory}
-                </h4>
-                <div className="space-y-2">
-                  {navigationData.subTopics[selectedCategory]?.map((topic) => (
-                    <button
-                      key={topic}
-                      className="w-full text-right p-3 rounded-lg text-white hover:bg-gray-700 transition-all"
-                    >
-                      <span className="text-sm">{topic}</span>
-                    </button>
-                  ))}
-                </div>
-                <button className="w-full mt-4 bg-white text-[#00040D] font-bold text-[14px] py-3 px-4 rounded-[12px] hover:bg-gray-100 transition-colors">
-                  استكشف جميع الدورات
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <MenueNav
+          setIsDropdownOpen={setIsDropdownOpen}
+          navigationData={navigationData}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
       )}
 
       {isDropdownOpen && (
