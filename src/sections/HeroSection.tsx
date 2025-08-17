@@ -7,43 +7,30 @@ export default function HeroSection() {
       <div
         className="absolute inset-0 bg-cover bg-center w-[55%] h-full"
         style={{
-          backgroundImage: "url('/assets/hero-section/instructors.png')",
+          backgroundImage: "url('/assets/hero-section/instructors.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       ></div>
-      <div
-        className="absolute inset-0 bg-cover bg-center w-full h-full"
-        style={{
-          backgroundImage: "url('/assets/hero-section/overlay.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#000000] to-[#0000007D] w-full h-full"></div>
       <div className="absolute left-1/2 -top-12 bg-[#7F60F9] -translate-x-1/2 -translate-y-1/2 w-[400px] rounded-full h-[400px] blur-3xl opacity-30"></div>
       <div
         className="absolute right-0 bg-cover bg-center w-[40%] h-[740px] bottom-0"
         style={{
-          backgroundImage: "url('/assets/hero-section/hero-model.png')",
+          backgroundImage: "url('/assets/hero-section/hero-model.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       ></div>
-      <div
-        className="absolute bottom-0 bg-cover bg-center w-full h-[192px]"
-        style={{
-          backgroundImage: "url('/assets/hero-section/hero-footer.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></div>
+      <div className="absolute bottom-0 bg-gradient-to-t from-[#00040D] to-[#00040D00] w-full h-[192px]"></div>
 
       <div className="relative z-10 flex flex-col gap-4 items-center justify-center h-full w-[569px] px-[68px]">
-        <h1 dir="rtl" className="text-[80px] font-bold leading-[94px] bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-[#00000000]">
+        <h1
+          dir="rtl"
+          className="text-[80px] font-bold leading-[94px] bg-gradient-to-r from-[#FFFFFF] to-[#71717A] bg-clip-text text-[#00000000]"
+        >
           <span className="pl-1">30</span>
           <span>يومًا</span>
         </h1>

@@ -2,8 +2,7 @@
 
 import React, { useState } from "react";
 import CarouselContainer from "@/components/carousel-container";
-import { useCategories } from "@/lib/hooks";
-import { useQuery } from "@tanstack/react-query";
+import { useCategories, useLazyQuery } from "@/lib/hooks";
 import { coursesApi, CoursesResponse } from "@/lib/api/courses";
 import { Course } from "@/types/course";
 
@@ -11,11 +10,13 @@ const BestsellingSection: React.FC = () => {
   const [page, setPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [courses, setCourses] = useState<Course[]>([]);
+
   const {
     data: coursesResponse,
     isLoading,
     error,
-  } = useQuery<CoursesResponse>({
+    ref,
+  } = useLazyQuery<CoursesResponse, Error>({
     queryKey: ["bestselling-courses", page, selectedCategory],
     queryFn: () =>
       coursesApi
@@ -51,21 +52,23 @@ const BestsellingSection: React.FC = () => {
   };
 
   return (
-    <CarouselContainer
-      isLoading={isLoading}
-      error={error}
-      onLoadMore={handleLoadMore}
-      categories={categories}
-      onCategoryClick={onCategoryClick}
-      courses={courses}
-      title="الأكثر مبيعاً"
-      subtitle="الدورات"
-      hasMorePages={
-        coursesResponse?.pagination
-          ? page < coursesResponse.pagination.pages
-          : true
-      }
-    />
+    <section ref={ref}>
+      <CarouselContainer
+        isLoading={isLoading}
+        error={error}
+        onLoadMore={handleLoadMore}
+        categories={categories}
+        onCategoryClick={onCategoryClick}
+        courses={courses}
+        title="الأكثر مبيعاً"
+        subtitle="الدورات"
+        hasMorePages={
+          coursesResponse?.pagination
+            ? page < coursesResponse.pagination.pages
+            : true
+        }
+      />
+    </section>
   );
 };
 

@@ -173,16 +173,14 @@ const CarouselContainer = ({
         )}
 
         <div className="relative">
-          {
-            emblaApi && emblaApi.scrollProgress() > 0 && (
-              <button
-                onClick={scrollPrev}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-[100] w-[60px] h-[60px] bg-[#FFFFFF1A] backdrop-blur-[1px] rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors shadow-lg nav-button"
-              >
-                <ChevronLeft className="w-7 h-7 text-white" />
-              </button>
-            )
-          }
+          {courses.length > 10 && (
+            <button
+              onClick={scrollPrev}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-[60px] h-[60px] bg-[#FFFFFF1A] backdrop-blur-[1px] rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors shadow-lg nav-button"
+            >
+              <ChevronLeft className="w-7 h-7 text-white" />
+            </button>
+          )}
 
           <div className="overflow-hidden relative" ref={emblaRef}>
             <div className="flex gap-6 relative">

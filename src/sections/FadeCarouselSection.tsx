@@ -2,14 +2,20 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { useQuery } from "@tanstack/react-query";
+import { useLazyQuery } from "@/lib/hooks";
 import { mostPopularApi } from "@/lib/api";
 import Image from "next/image";
+import { CoursesResponse } from "@/lib/api/courses";
+import { Course } from "@/types/course";
 
 const FadeCarouselSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const { data: mostPopularCourses } = useQuery({
+
+  const { data: mostPopularCourses, ref } = useLazyQuery<
+    CoursesResponse,
+    Error
+  >({
     queryKey: ["most-popular-courses"],
     queryFn: () =>
       mostPopularApi.getMostPopularCourses({
@@ -17,6 +23,7 @@ const FadeCarouselSection = () => {
         per_page: 10,
       }),
   });
+
   console.log(mostPopularCourses?.data);
 
   const handleDotClick = (index: number) => {
@@ -31,6 +38,7 @@ const FadeCarouselSection = () => {
       }, 300);
     }, 300);
   };
+
   const getDotStyles = (index: number) => {
     const totalDots = mostPopularCourses?.data.length || 0;
     const centerIndex = (totalDots - 1) / 2;
@@ -59,7 +67,7 @@ const FadeCarouselSection = () => {
   const currentSlideData = mostPopularCourses?.data[currentSlide];
 
   return (
-    <section className="text-white  bg-[#00040D] px-[20px]">
+    <section ref={ref} className="text-white  bg-[#00040D] px-[20px]">
       <h2 className="text-4xl md:text-5xl font-bold text-red-600 flex items-end justify-end gap-2 mb-10">
         <span>تدريبية قادمة</span>
         <span className="text-white">دورات و ورش</span>
@@ -119,7 +127,7 @@ const FadeCarouselSection = () => {
 
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-20">
           <div className="flex">
-            {mostPopularCourses?.data.map((_, index) => (
+            {mostPopularCourses?.data.map((_: Course, index: number) => (
               <button
                 key={index}
                 onClick={() => handleDotClick(index)}

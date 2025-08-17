@@ -9,7 +9,7 @@ const BussniessSection = () => {
     <div className="w-full overflow-hidden">
       <div className="w-full h-[540px] bg-cover bg-center bg-no-repeat relative rounded-[20px]">
         <Image
-          src="/assets/bussniess-section/Image.png"
+          src="/assets/bussniess-section/Image.webp"
           alt="bussniess"
           className="w-full h-full"
           width={1920}
