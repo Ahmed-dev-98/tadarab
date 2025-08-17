@@ -94,7 +94,7 @@ const InstructorsCarousel: React.FC<InstructorsCarouselProps> = ({
     }
   };
 
-  const onReachEnd = (swiper: SwiperType) => {
+  const onReachEnd = () => {
     if (!isLoadingMoreRef.current && hasMorePages && !isLoading) {
       console.log("instructors carousel reached end - drag/swipe");
       isLoadingMoreRef.current = true;

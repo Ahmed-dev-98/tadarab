@@ -2,7 +2,7 @@ import CarouselContainer from "@/components/carousel-container";
 import { Course } from "@/types/course";
 import { useLazyQuery } from "@/lib/hooks";
 import React, { useState } from "react";
-import { coursesApi } from "@/lib/api/courses";
+import { coursesApi, CoursesResponse } from "@/lib/api/courses";
 
 const FreeCoursesSection = () => {
   const [page, setPage] = useState(1);
@@ -13,7 +13,7 @@ const FreeCoursesSection = () => {
     isLoading,
     error,
     ref,
-  } = useLazyQuery<any, Error>({
+  } = useLazyQuery<CoursesResponse, Error>({
     queryKey: ["free-courses", page],
     queryFn: () =>
       coursesApi

@@ -1,4 +1,4 @@
-import { useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query';
+import { useQuery, UseQueryOptions, } from '@tanstack/react-query';
 import { useIntersectionObserver } from './useIntersectionObserver';
 
 interface UseLazyQueryOptions<TData, TError> extends Omit<UseQueryOptions<TData, TError>, 'enabled'> {

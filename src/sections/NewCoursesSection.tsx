@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Course } from "@/types/course";
 import CarouselContainer from "@/components/carousel-container";
 import { useLazyQuery } from "@/lib/hooks";
-import { coursesApi } from "@/lib/api/courses";
+import { coursesApi, CoursesResponse } from "@/lib/api/courses";
 
 const NewCoursesSection: React.FC = () => {
   const [page, setPage] = useState(1);
@@ -15,7 +15,7 @@ const NewCoursesSection: React.FC = () => {
     isLoading,
     error,
     ref,
-  } = useLazyQuery<any, Error>({
+  } = useLazyQuery<CoursesResponse, Error>({
     queryKey: ["new-courses", page],
     queryFn: () =>
       coursesApi

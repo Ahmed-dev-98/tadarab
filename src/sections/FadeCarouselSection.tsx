@@ -5,12 +5,17 @@ import { cn } from "@/lib/utils";
 import { useLazyQuery } from "@/lib/hooks";
 import { mostPopularApi } from "@/lib/api";
 import Image from "next/image";
+import { CoursesResponse } from "@/lib/api/courses";
+import { Course } from "@/types/course";
 
 const FadeCarouselSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const { data: mostPopularCourses, ref } = useLazyQuery<any, Error>({
+  const { data: mostPopularCourses, ref } = useLazyQuery<
+    CoursesResponse,
+    Error
+  >({
     queryKey: ["most-popular-courses"],
     queryFn: () =>
       mostPopularApi.getMostPopularCourses({
@@ -122,7 +127,7 @@ const FadeCarouselSection = () => {
 
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-20">
           <div className="flex">
-            {mostPopularCourses?.data.map((_: any, index: number) => (
+            {mostPopularCourses?.data.map((_: Course, index: number) => (
               <button
                 key={index}
                 onClick={() => handleDotClick(index)}

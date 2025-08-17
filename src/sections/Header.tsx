@@ -1,13 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  ChevronDown,
-  ChevronLeft,
-  Search,
-  ShoppingCart,
-  Sparkles,
-} from "lucide-react";
+import { ChevronDown, ChevronLeft, Search, ShoppingCart } from "lucide-react";
 import { ReactSVG } from "react-svg";
 
 type Category = string;
