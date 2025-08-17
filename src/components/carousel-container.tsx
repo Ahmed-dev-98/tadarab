@@ -122,7 +122,7 @@ const CarouselContainer = ({
   return (
     <section className="text-white py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-[20px] bg-[#00040D]">
       <div className="w-full mx-auto">
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 sm:gap-0 mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row sm:justify-between items-center sm:items-start gap-4 sm:gap-0 mb-6 sm:mb-8">
           <button className="text-white hover:text-gray-300 transition-colors text-lg sm:text-xl md:text-[24px] font-bold hover:underline flex items-center gap-1 order-2 sm:order-1">
             <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
             <span>المزيد</span>

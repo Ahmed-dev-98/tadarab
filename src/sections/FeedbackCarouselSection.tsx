@@ -76,7 +76,7 @@ const FeedbackCarouselSection = () => {
   return (
     <section className="text-white py-16 bg-[#00040D] px-[20px]">
       <div className="w-full mx-auto ">
-        <div className="flex justify-between items-start mb-12 ">
+        <div className="flex gap-3 sm:flex-row flex-col-reverse justify-between items-center mb-12 ">
           <button className="text-white hover:text-gray-300 transition-colors text-[24px] font-bold hover:underline flex items-center gap-1">
             <ChevronLeft className="w-7 h-7 text-white" />
             <span>المزيد</span>

@@ -25,14 +25,16 @@ export default function Home() {
       <HeroSection />
       <main className="max-w-[1961px] mx-auto flex flex-col gap-[80px] bg-[#00040D]">
         <BestsellingSection />
-        
         <NewCoursesSection />
         <FadeCarouselSection />
+
         <CourseCategoriesSection />
         <FreeCoursesSection />
         <FeedbackCarouselSection />
+
         <SponsorSection />
         <StatisticsMap />
+        
         <BussniessSection />
         <InstructosSection />
         <SupportSection />

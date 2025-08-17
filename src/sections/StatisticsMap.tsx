@@ -72,38 +72,40 @@ const StatisticsMap = () => {
 
   return (
     <div
-      className="w-[90%] mx-auto rounded-[20px] overflow-hidden"
+      className="w-[95%] sm:w-[92%] md:w-[90%] mx-auto rounded-[12px] sm:rounded-[16px] md:rounded-[20px] overflow-hidden"
       ref={componentRef}
     >
-      <div className="w-full h-[500px] bg-cover bg-center bg-no-repeat relative rounded-[20px]">
+      <div className="w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] bg-cover bg-center bg-no-repeat relative rounded-[12px] sm:rounded-[16px] md:rounded-[20px]">
         <Image
           src="/assets/statistics/map.png"
-          alt="sponsor"
-          className="w-full h-full "
+          alt="statistics map"
+          className="w-full h-full object-cover"
           width={1920}
           height={500}
         />
 
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-white w-full px-6">
-            <h2 className="text-[40px] font-extrabold mb-6">أكثر من</h2>
+        <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 md:px-8">
+          <div className="text-center text-white w-full">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[40px] font-extrabold mb-4 sm:mb-5 md:mb-6 leading-tight">
+              أكثر من
+            </h2>
 
-            <div className="mb-6 flex justify-center">
-              <h1 className="text-[60px] font-extrabold text-[#BE1622]">
+            <div className="mb-4 sm:mb-5 md:mb-6 flex justify-center">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[60px] font-extrabold text-[#BE1622] leading-tight">
                 300,000 متعلم
               </h1>
             </div>
 
-            <p className="text-lg md:text-[40px] font-extrabold mb-[42px] text-center leading-[33px]">
+            <p className="text-base sm:text-lg md:text-2xl lg:text-[40px] font-extrabold mb-6 sm:mb-8 md:mb-[42px] text-center leading-relaxed sm:leading-[28px] md:leading-[30px] lg:leading-[33px]">
               في الوطن العربي
             </p>
 
-            <p className="text-base md:text-[16px] font-normal mb-6 text-center text-[#FFFFFF99]">
+            <p className="text-xs sm:text-sm md:text-base lg:text-[16px] font-normal mb-4 sm:mb-5 md:mb-6 text-center text-[#FFFFFF99] leading-relaxed max-w-[280px] sm:max-w-[350px] md:max-w-[400px] lg:max-w-none mx-auto">
               منصة تدرب الرائدة في مجال التدريب في الخليج والوطن العربي منذ أكثر
               من 10 سنوات في مجال التعلم من بعد
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 w-full">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 mt-6 sm:mt-7 md:mt-8 w-full max-w-[320px] sm:max-w-[400px] md:max-w-none mx-auto">
               {[
                 {
                   title: "سنوات خبرة",
@@ -123,10 +125,10 @@ const StatisticsMap = () => {
                 },
               ].map((item, index) => (
                 <div className="text-center" key={index}>
-                  <div className="text-2xl md:text-[32px] font-extrabold text-[#BE1622] mb-2">
+                  <div className="text-lg sm:text-xl md:text-2xl lg:text-[32px] font-extrabold text-[#BE1622] mb-1 sm:mb-1.5 md:mb-2 leading-tight">
                     {item.value}+
                   </div>
-                  <div className="text-sm md:text-[20px] font-normal text-white">
+                  <div className="text-xs sm:text-sm md:text-base lg:text-[20px] font-normal text-white leading-tight">
                     {item.title}
                   </div>
                 </div>
