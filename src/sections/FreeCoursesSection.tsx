@@ -1,6 +1,6 @@
 import CarouselContainer from "@/components/carousel-container";
 import { Course } from "@/types/course";
-import { useQuery } from "@tanstack/react-query";
+import { useLazyQuery } from "@/lib/hooks";
 import React, { useState } from "react";
 import { coursesApi } from "@/lib/api/courses";
 
@@ -12,7 +12,8 @@ const FreeCoursesSection = () => {
     data: coursesResponse,
     isLoading,
     error,
-  } = useQuery({
+    ref,
+  } = useLazyQuery<any, Error>({
     queryKey: ["free-courses", page],
     queryFn: () =>
       coursesApi
@@ -37,19 +38,21 @@ const FreeCoursesSection = () => {
   };
 
   return (
-    <CarouselContainer
-      isLoading={isLoading}
-      error={error}
-      onLoadMore={handleLoadMore}
-      courses={courses}
-      hasMorePages={
-        coursesResponse?.pagination
-          ? page < coursesResponse.pagination.pages
-          : true
-      }
-      title="المجانية"
-      subtitle="الدورات"
-    />
+    <section ref={ref}>
+      <CarouselContainer
+        isLoading={isLoading}
+        error={error}
+        onLoadMore={handleLoadMore}
+        courses={courses}
+        hasMorePages={
+          coursesResponse?.pagination
+            ? page < coursesResponse.pagination.pages
+            : true
+        }
+        title="المجانية"
+        subtitle="الدورات"
+      />
+    </section>
   );
 };
 

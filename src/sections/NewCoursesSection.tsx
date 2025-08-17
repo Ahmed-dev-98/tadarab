@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Course } from "@/types/course";
 import CarouselContainer from "@/components/carousel-container";
-import { useQuery } from "@tanstack/react-query";
+import { useLazyQuery } from "@/lib/hooks";
 import { coursesApi } from "@/lib/api/courses";
 
 const NewCoursesSection: React.FC = () => {
@@ -14,7 +14,8 @@ const NewCoursesSection: React.FC = () => {
     data: coursesResponse,
     isLoading,
     error,
-  } = useQuery({
+    ref,
+  } = useLazyQuery<any, Error>({
     queryKey: ["new-courses", page],
     queryFn: () =>
       coursesApi
@@ -39,19 +40,21 @@ const NewCoursesSection: React.FC = () => {
   };
 
   return (
-    <CarouselContainer
-      isLoading={isLoading}
-      error={error}
-      onLoadMore={handleLoadMore}
-      courses={courses}
-      title="الجديدة"
-      subtitle="الدورات"
-      hasMorePages={
-        coursesResponse?.pagination
-          ? page < coursesResponse.pagination.pages
-          : true
-      }
-    />
+    <section ref={ref}>
+      <CarouselContainer
+        isLoading={isLoading}
+        error={error}
+        onLoadMore={handleLoadMore}
+        courses={courses}
+        title="الجديدة"
+        subtitle="الدورات"
+        hasMorePages={
+          coursesResponse?.pagination
+            ? page < coursesResponse.pagination.pages
+            : true
+        }
+      />
+    </section>
   );
 };
 
