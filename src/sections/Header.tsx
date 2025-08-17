@@ -107,7 +107,7 @@ export default function Header() {
             backgroundRepeat: "no-repeat",
           }}
         ></div>
-        <div className="flex-col flex-col-reverse md:flex-row flex gap-2 items-center justify-center relative">
+        <div className="flex-col-reverse md:flex-row flex gap-2 items-center justify-center relative">
           <button className="text-sm text-white hover:text-gray-200 transition-colors underline">
             اشترك الان
           </button>
@@ -224,7 +224,7 @@ export default function Header() {
                             </button>
                           ))}
                         </div>
-                        <button className="w-full mt-4 bg-white text-gray-800 py-3 px-4 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                        <button className="w-full mt-4 bg-white text-[#00040D] font-bold text-[14px] py-3 px-4 rounded-[12px] hover:bg-gray-100 transition-colors">
                           استكشف جميع الدورات
                         </button>
                       </div>
@@ -326,7 +326,7 @@ export default function Header() {
                     </button>
                   ))}
                 </div>
-                <button className="w-full mt-4 bg-white text-gray-800 py-3 px-4 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                <button className="w-full mt-4 bg-white text-[#00040D] font-bold text-[14px] py-3 px-4 rounded-[12px] hover:bg-gray-100 transition-colors">
                   استكشف جميع الدورات
                 </button>
               </div>
